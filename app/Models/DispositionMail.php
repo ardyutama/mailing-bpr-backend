@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class disposisi_inbox_mail extends Model
+class DispositionMail extends Model
 {
     use HasFactory;
 
-    public function InboxMails(){
+    public function InboxMails()
+    {
         return $this->belongsTo(InboxMail::class);
     }
 }

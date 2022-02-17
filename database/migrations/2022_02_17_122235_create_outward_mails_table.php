@@ -14,15 +14,15 @@ class CreateOutwardMailsTable extends Migration
     public function up()
     {
         Schema::create('outward_mails', function (Blueprint $table) {
-            $table->id('no_surat_keluar');
+            $table->id();
             $table->date('tgl_surat_keluar');
             $table->text('perihal');
-            $table->foreignId('tipe_surat_id');
+            $table->foreignId('tipe_surat_id')->nullable()->constrained('type__mails');
             $table->enum('sifat_surat', ['Terbuka', 'Rahasia', 'Urgent']);
             $table->string('pengirim_surat');
             $table->string('penerima_surat');
             $table->string('approver');
-            $table->foreignId('creator_id');
+            $table->foreignId('creator_id')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

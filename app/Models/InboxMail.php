@@ -10,7 +10,7 @@ class InboxMail extends Model
     use HasFactory;
 
     public function disposisi_inbox_mails(){
-        return $this->hasMany(disposisi_inbox_mail::class);
+        return $this->hasMany(Disposisi_inbox_mail::class);
     }
     public function Users()
     {

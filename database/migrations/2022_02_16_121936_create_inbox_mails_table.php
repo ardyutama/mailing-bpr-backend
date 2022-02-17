@@ -13,16 +13,16 @@ class CreateInboxMailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('surat_masuk', function (Blueprint $table) {
-            $table->id('no_surat_masuk');
+        Schema::create('inbox_mails', function (Blueprint $table) {
+            $table->id();
             $table->date('tgl_surat_masuk');
             $table->text('perihal');
-            $table->foreignId('tipe_surat_id');
+            $table->foreignId('tipe_surat_id')->nullable()->constrained('type__mails');
             $table->enum('sifat_surat', ['Terbuka', 'Rahasia', 'Urgent']);
             $table->boolean('isOpened');
             $table->string('pengirim_surat');
             $table->string('penerima_surat');
-            $table->foreignId('creator_id');
+            $table->foreignId('creator_id')->nullable() -> constrained('users');
             $table->timestamps();
         });
     }

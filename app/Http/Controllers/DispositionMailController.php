@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\disposisi_inbox_mail;
-use App\Http\Requests\Storedisposisi_inbox_mailRequest;
-use App\Http\Requests\Updatedisposisi_inbox_mailRequest;
+use App\Models\DispositionMail;
+use App\Http\Requests\StoreDispositionMailRequest;
+use App\Http\Requests\UpdateDispositionMailRequest;
 
-class DisposisiInboxMailController extends Controller
+class DispositionMailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class DisposisiInboxMailController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Storedisposisi_inbox_mailRequest  $request
+     * @param  \App\Http\Requests\StoreDispositionMailRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Storedisposisi_inbox_mailRequest $request)
+    public function store(StoreDispositionMailRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class DisposisiInboxMailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\disposisi_inbox_mail  $disposisi_inbox_mail
+     * @param  \App\Models\DispositionMail  $dispositionMail
      * @return \Illuminate\Http\Response
      */
-    public function show(disposisi_inbox_mail $disposisi_inbox_mail)
+    public function show(DispositionMail $dispositionMail)
     {
         //
     }
@@ -53,10 +53,10 @@ class DisposisiInboxMailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\disposisi_inbox_mail  $disposisi_inbox_mail
+     * @param  \App\Models\DispositionMail  $dispositionMail
      * @return \Illuminate\Http\Response
      */
-    public function edit(disposisi_inbox_mail $disposisi_inbox_mail)
+    public function edit(DispositionMail $dispositionMail)
     {
         //
     }
@@ -64,11 +64,11 @@ class DisposisiInboxMailController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Updatedisposisi_inbox_mailRequest  $request
-     * @param  \App\Models\disposisi_inbox_mail  $disposisi_inbox_mail
+     * @param  \App\Http\Requests\UpdateDispositionMailRequest  $request
+     * @param  \App\Models\DispositionMail  $dispositionMail
      * @return \Illuminate\Http\Response
      */
-    public function update(Updatedisposisi_inbox_mailRequest $request, disposisi_inbox_mail $disposisi_inbox_mail)
+    public function update(UpdateDispositionMailRequest $request, DispositionMail $dispositionMail)
     {
         //
     }
@@ -76,10 +76,10 @@ class DisposisiInboxMailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\disposisi_inbox_mail  $disposisi_inbox_mail
+     * @param  \App\Models\DispositionMail  $dispositionMail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(disposisi_inbox_mail $disposisi_inbox_mail)
+    public function destroy(DispositionMail $dispositionMail)
     {
         //
     }

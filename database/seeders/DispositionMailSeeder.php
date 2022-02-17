@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class DisposisiInboxMailSeeder extends Seeder
+class DispositionMailSeeder extends Seeder
 {
     /**
      * Run the database seeds.
