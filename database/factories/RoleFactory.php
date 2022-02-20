@@ -14,7 +14,7 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'roles_name' => $this->faker->randomElement(['Direktur Utama', 'Direksi', 'Pimpinan Divisi', 'Pimpinan Sub Divisi', 'Penyelia', 'Staff']),
         ];
     }
 }

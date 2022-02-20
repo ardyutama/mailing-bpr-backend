@@ -9,6 +9,9 @@ class InboxMail extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'tgl_surat_masuk','perihal','tipe_surat_id','sifat_surat','pengirim_surat','penerima_surat','creator_id'
+    ];
     public function disposisi_inbox_mails(){
         return $this->hasMany(Disposisi_inbox_mail::class);
     }

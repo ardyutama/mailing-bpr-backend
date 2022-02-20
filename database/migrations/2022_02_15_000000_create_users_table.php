@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->foreignId('employee_id')->nullable()->constrained('employees');
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }

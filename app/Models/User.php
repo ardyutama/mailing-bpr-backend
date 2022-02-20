@@ -12,6 +12,12 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected $fillable = [
+        'username','token','employee_id'
+    ];
+    protected $hidden = [
+        'password'
+    ];
     
     public function employees()
     {

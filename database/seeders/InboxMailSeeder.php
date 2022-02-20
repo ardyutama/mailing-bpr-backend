@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\InboxMail;
 use Illuminate\Database\Seeder;
 
 class InboxMailSeeder extends Seeder
@@ -13,6 +14,6 @@ class InboxMailSeeder extends Seeder
      */
     public function run()
     {
-        //
+        InboxMail::factory(10)->create();
     }
 }

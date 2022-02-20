@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\OutwardMail;
 use Illuminate\Database\Seeder;
 
 class OutwardMailSeeder extends Seeder
@@ -13,6 +14,6 @@ class OutwardMailSeeder extends Seeder
      */
     public function run()
     {
-        //
+        OutwardMail::factory(10)->create();
     }
 }

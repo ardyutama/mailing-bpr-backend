@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -14,10 +15,11 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $employee_id = Employee::all()->pluck('id')->toArray();
         return [
             'username' => $this->faker->unique()->userName(),
             'password' => bcrypt('password'), // password
-            'employee_id' => mt_rand(1,10),
+            'employee_id' => $this->faker->randomElement($employee_id),
         ];
     }
 

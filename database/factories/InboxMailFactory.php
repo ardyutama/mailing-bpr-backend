@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Employee;
+use App\Models\Type_Mail;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class InboxMailFactory extends Factory
@@ -13,14 +15,19 @@ class InboxMailFactory extends Factory
      */
     public function definition()
     {
+        // $nama_employee = Employee::all()->pluck('first_name')->toArray();
+        $id_name = Employee::all()->pluck('id')->toArray();
+        $tipe_id = Type_Mail::all()->pluck('id')->toArray();
         return [
             'tgl_surat_masuk' => $this->faker->dateTimeBetween('-1 week','now'),
             'perihal' => $this->faker->paragraph(mt_rand(3,5)),
-            'tipe_surat_id'=> mt_rand(1,3),
+            'tipe_surat_id'=> $this->faker->randomElement($tipe_id),
+            'sifat_surat'=>
+            $this->faker->randomElement(['Terbuka', 'Rahasia', 'Urgent']),
             'isOpened'=> $this->faker->boolean(),
-            'pengirim_surat_id'=> mt_rand(1,10),
-            'penerima_surat_id' => mt_rand(1, 10),
-            'creator_id'=> mt_rand(1,10),
+            'pengirim_surat'=> $this->faker->randomElement($id_name),
+            'penerima_surat' => $this->faker->randomElement($id_name),
+            'creator_id'=>  $this->faker->randomElement($id_name),
         ];
     }
 }

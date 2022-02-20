@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class OutwardMail extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        'tgl_surat_keluar', 'perihal', 'tipe_surat_id', 'sifat_surat', 'pengirim_surat', 'penerima_surat','approver', 'creator_id',
+    ];
     public function Type_Mails(){
         return $this->belongsTo(Type_Mail::class);
     }

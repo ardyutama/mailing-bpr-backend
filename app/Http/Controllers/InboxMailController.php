@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\InboxMail;
 use App\Http\Requests\StoreInboxMailRequest;
 use App\Http\Requests\UpdateInboxMailRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class InboxMailController extends Controller
 {
@@ -15,7 +16,12 @@ class InboxMailController extends Controller
      */
     public function index()
     {
-        //
+        $inbox = InboxMail::orderBy('tgl_surat_masuk','DESC')->get();
+        $response = [
+            'message' => 'List Inbox mail order by time',
+            'data'=> $inbox
+        ];
+        return response()->json($response,Response::HTTP_OK);
     }
 
     /**

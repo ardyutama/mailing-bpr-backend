@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Type_Mail extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        'type_name'
+    ];
     public function InboxMails()
     {
         return $this->hasMany(InboxMail::class);

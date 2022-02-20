@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Employee;
 use Illuminate\Database\Seeder;
 
-class SuratKeluarSeeder extends Seeder
+class EmployeeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,6 @@ class SuratKeluarSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Employee::factory(10)->create();
     }
 }
