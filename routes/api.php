@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\InboxMailController;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/profile', function (Request $request) {
+        return auth()->user();
+    });
+});
+
+Route::controller(EmployeeController::class)->group(function () {
+    Route::post('/login', 'login');
 });
 
 Route::get('/inbox', [InboxMailController::class, 'index']);
+
+Route::controller(InboxMailController::class)->group(function(){
+    Route::get('Inbox/{id}','show');
+});

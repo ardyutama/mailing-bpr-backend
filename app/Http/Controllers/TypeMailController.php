@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Type_Mail;
-use App\Http\Requests\StoreType_MailRequest;
-use App\Http\Requests\UpdateType_MailRequest;
+use App\Models\TypeMail;
+use App\Http\Requests\StoreTypeMailRequest;
+use App\Http\Requests\UpdateTypeMailRequest;
 
 class TypeMailController extends Controller
 {
@@ -31,10 +31,10 @@ class TypeMailController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreType_MailRequest  $request
+     * @param  \App\Http\Requests\StoreTypeMailRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreType_MailRequest $request)
+    public function store(StoreTypeMailRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class TypeMailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Type_Mail  $type_Mail
+     * @param  \App\Models\TypeMail  $typeMail
      * @return \Illuminate\Http\Response
      */
-    public function show(Type_Mail $type_Mail)
+    public function show(TypeMail $typeMail)
     {
         //
     }
@@ -53,10 +53,10 @@ class TypeMailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Type_Mail  $type_Mail
+     * @param  \App\Models\TypeMail  $typeMail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type_Mail $type_Mail)
+    public function edit(TypeMail $typeMail)
     {
         //
     }
@@ -64,11 +64,11 @@ class TypeMailController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateType_MailRequest  $request
-     * @param  \App\Models\Type_Mail  $type_Mail
+     * @param  \App\Http\Requests\UpdateTypeMailRequest  $request
+     * @param  \App\Models\TypeMail  $typeMail
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateType_MailRequest $request, Type_Mail $type_Mail)
+    public function update(UpdateTypeMailRequest $request, TypeMail $typeMail)
     {
         //
     }
@@ -76,10 +76,10 @@ class TypeMailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Type_Mail  $type_Mail
+     * @param  \App\Models\TypeMail  $typeMail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type_Mail $type_Mail)
+    public function destroy(TypeMail $typeMail)
     {
         //
     }

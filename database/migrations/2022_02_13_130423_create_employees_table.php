@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('NIP') -> unique();
+            $table->string('password');
             $table->foreignId('departement_id')-> constrained('departements')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->foreignId('role_id')->nullable()->constrained('roles');

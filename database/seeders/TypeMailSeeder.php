@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Type_Mail;
+use App\Models\TypeMail;
 use Illuminate\Database\Seeder;
 
 class TypeMailSeeder extends Seeder
@@ -25,12 +25,12 @@ class TypeMailSeeder extends Seeder
                 'type_name' => 'Nota'
             ],
             [
-                'type_name' => 'Nota'
+                'type_name' => 'Memorandum'
             ],
         ];
 
         foreach ($data as $key => $value) {
-            Type_Mail::create($value);
+            TypeMail::create($value);
         }
     }
 }

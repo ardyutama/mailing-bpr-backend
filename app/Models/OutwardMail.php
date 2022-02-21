@@ -15,9 +15,9 @@ class OutwardMail extends Model
         return $this->belongsTo(Type_Mail::class);
     }
 
-    public function Users()
+    public function Employees()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Employee::class);
     }
     
 }

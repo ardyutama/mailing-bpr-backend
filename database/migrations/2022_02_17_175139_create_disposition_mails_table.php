@@ -16,9 +16,9 @@ class CreateDispositionMailsTable extends Migration
         Schema::create('disposition_mails', function (Blueprint $table) {
                 $table->id();
                 $table->date('tgl_isi');
-                $table->string('kepada');
+                $table->foreignId('pengirim_id')->nullable()->constrained('employees');
+                $table->foreignId('penerima_id')->nullable()->constrained('employees');
                 $table->text('isi_disposisi');
-                $table->text('dari');
                 $table->foreignId('inbox_id')->nullable()->constrained('inbox_mails');
                 $table->timestamps();
         });

@@ -14,7 +14,7 @@ class TypeMailFactory extends Factory
     public function definition()
     {
         return [
-            'type_name' => $this->faker->randomElement(['Surat Edaran', 'Surat Keputusan', 'Nota', 'Nota']),
+            //
         ];
     }
 }

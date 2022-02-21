@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\OutwardMail;
 use App\Http\Requests\StoreOutwardMailRequest;
 use App\Http\Requests\UpdateOutwardMailRequest;
+use Illuminate\Http\Request;
 
 class OutwardMailController extends Controller
 {
@@ -36,7 +37,32 @@ class OutwardMailController extends Controller
      */
     public function store(StoreOutwardMailRequest $request)
     {
-        //
+        // $request->rules(Request $data);
+        // $validator = Validator::make($request->all(), [
+        //     'perihal' => ['required'],
+        //     'sifat_surat' => ['required', 'in:Terbuka, Rahasia, Urgent'],
+
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return response()->json(
+        //         $validator->errors(),
+        //         Response::HTTP_UNPROCESSABLE_ENTITY
+        //     );
+        // }
+
+        // try {
+        //     $inbox = OutwardMail::create($request->all());
+        //     $response = [
+        //         'message' => 'Membuat Mail sukses',
+        //         'data' => $inbox
+        //     ];
+        //     return response()->json($response, Response::HTTP_CREATED);
+        // } catch (QueryException $e) {
+        //     return response()->json([
+        //         'message' => "Failed " . $e->errorInfo,
+        //     ]);
+        // }
     }
 
     /**

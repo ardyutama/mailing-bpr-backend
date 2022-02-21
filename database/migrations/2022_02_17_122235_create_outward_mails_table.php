@@ -17,12 +17,12 @@ class CreateOutwardMailsTable extends Migration
             $table->id();
             $table->date('tgl_surat_keluar');
             $table->text('perihal');
-            $table->foreignId('tipe_surat_id')->nullable()->constrained('type__mails');
+            $table->foreignId('tipe_surat_id')->nullable()->constrained('type_mails');
             $table->enum('sifat_surat', ['Terbuka', 'Rahasia', 'Urgent']);
-            $table->string('pengirim_surat');
-            $table->string('penerima_surat');
-            $table->string('approver');
-            $table->foreignId('creator_id')->nullable()->constrained('users');
+            $table->foreignId('pengirim_surat')->nullable()->constrained('employees');
+            $table->foreignId('penerima_surat')->nullable()->constrained('employees');
+            $table->foreignId('approver')->nullable()->constrained('employees');
+            $table->foreignId('creator_id')->nullable()->constrained('employees');
             $table->timestamps();
         });
     }

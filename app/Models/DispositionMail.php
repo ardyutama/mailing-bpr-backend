@@ -9,10 +9,14 @@ class DispositionMail extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'tgl_isi','kepada','isi_disposisi','dari','inbox_id'
+        'tgl_isi','pengirim_id', 'penerima_id','isi_disposisi','inbox_id'
     ];
     public function InboxMails()
     {
         return $this->belongsTo(InboxMail::class);
+    }
+    public function Employees()
+    {
+        return $this->belongsTo(Employee::class);
     }
 }

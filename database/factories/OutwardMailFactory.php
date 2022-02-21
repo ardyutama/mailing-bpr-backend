@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Employee;
 use App\Models\Type_Mail;
+use App\Models\TypeMail;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -16,19 +17,18 @@ class OutwardMailFactory extends Factory
      */
     public function definition()
     {
-        // $nama_employee = User::all()->pluck('first_name')->toArray();
-        $id_name = User::all()->pluck('id')->toArray();
-        $tipe_id = Type_Mail::all()->pluck('id')->toArray();
+        $employee_id = Employee::all()->pluck('id')->toArray();
+        $tipe_id = TypeMail::all()->pluck('id')->toArray();
         return [
             'tgl_surat_keluar' => $this->faker->dateTimeBetween('-1 week', 'now'),
             'perihal' => $this->faker->paragraph(mt_rand(3, 5)),
             'tipe_surat_id' => $this->faker->randomElement($tipe_id),
             'sifat_surat' =>
             $this->faker->randomElement(['Terbuka', 'Rahasia', 'Urgent']),
-            'pengirim_surat' => $this->faker->randomElement($id_name),
-            'penerima_surat' => $this->faker->randomElement($id_name),
-            'approver'=> $this->faker->randomElement($id_name),
-            'creator_id' => $this->faker->randomElement($id_name),
+            'pengirim_surat' => $this->faker->randomElement($employee_id),
+            'penerima_surat' => $this->faker->randomElement($employee_id),
+            'approver'=> $this->faker->randomElement($employee_id),
+            'creator_id' => $this->faker->randomElement($employee_id),
         ];
     }
 }

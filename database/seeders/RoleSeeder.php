@@ -27,6 +27,15 @@ class RoleSeeder extends Seeder
             [
                 'roles_name' => 'Pimpinan Sub Divisi'
             ],
+            [
+                'roles_name' => 'Senior Officer'
+            ],
+            [
+                'roles_name' => 'Penyelia'
+            ],
+            [
+                'roles_name' => 'Staff'
+            ],
         ];
 
         foreach($data as $key => $value) {

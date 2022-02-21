@@ -14,6 +14,6 @@ class DispositionMailSeeder extends Seeder
      */
     public function run()
     {
-        
+        DispositionMail::factory(5)->create();
     }
 }

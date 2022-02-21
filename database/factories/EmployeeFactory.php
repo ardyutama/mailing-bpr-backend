@@ -20,6 +20,7 @@ class EmployeeFactory extends Factory
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'NIP' => $this->faker->randomNumber(5,true),
+            'password' => '$2y$10$MNI\/4rABVeiLvdXs9Hacy.mXY0hezO\/6Lz5a2.TJ7KIQV.DEIx7z6', // password
             'departement_id'=> $this->faker->randomElement($departement_id),
             'role_id' => $this->faker->randomElement($role_id),
         ];

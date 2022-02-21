@@ -2,7 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Models\OutwardMail;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class StoreOutwardMailRequest extends FormRequest
 {
@@ -24,7 +29,9 @@ class StoreOutwardMailRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 'perihal'=> 'required',
+            // 'sifat_surat' => 'required','in:Terbuka, Rahasia, Urgent',
+
         ];
     }
 }

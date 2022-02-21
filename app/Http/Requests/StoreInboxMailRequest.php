@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Models\InboxMail;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class StoreInboxMailRequest extends FormRequest
 {
@@ -21,10 +25,8 @@ class StoreInboxMailRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
-        return [
-            //
-        ];
+       
     }
 }

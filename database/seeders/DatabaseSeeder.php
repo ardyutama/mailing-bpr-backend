@@ -19,11 +19,10 @@ class DatabaseSeeder extends Seeder
             DepartementSeeder::class,
             RoleSeeder::class,
             EmployeeSeeder::class,
-            UserSeeder::class,
+            TypeMailSeeder::class,
             InboxMailSeeder::class,
             OutwardMailSeeder::class,
             DispositionMailSeeder::class,
-            TypeMailSeeder::class,
         ]);
     }
 }

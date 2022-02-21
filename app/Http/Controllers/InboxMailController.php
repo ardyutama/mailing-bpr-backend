@@ -51,9 +51,9 @@ class InboxMailController extends Controller
      * @param  \App\Models\InboxMail  $inboxMail
      * @return \Illuminate\Http\Response
      */
-    public function show(InboxMail $inboxMail)
+    public function show($id)
     {
-        //
+        
     }
 
     /**
