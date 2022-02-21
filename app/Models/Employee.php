@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Employee extends Authenticatable implements JWTSubject
+class Employee extends Model
 {
 
     protected $fillable = [

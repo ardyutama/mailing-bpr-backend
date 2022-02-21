@@ -9,7 +9,7 @@ class User extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'NIP',
+        'NIP','employee_id','password'
     ];
     protected $hidden = [
         'password',

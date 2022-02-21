@@ -22,38 +22,7 @@ class EmployeeController extends Controller
         //
     }
 
-    public function login(Request $request){
-        try {
-            $request->validate([
-                'NIP' => ['required','numeric'],
-                'password' => ['required'],
-            ]);
-            // $nip = $request->input('NIP');
-            // $password = $request->input('password');
-            // $data = Employee::where('NIP',$nip)->first();
-            // echo $password;
-            $credentials = $request->only('NIP','password');
-            // echo $credentials;
-            // echo Hash::check($password,$data->password);
-            // if (Hash::check($password, $data->password))
-            // echo Auth::attempt($credentials);
-            if ( !Auth::attempt($credentials))
-            {
-                return response()->json([
-                    'message' => Response::HTTP_UNAUTHORIZED,
-                ]);
-            } 
-            $data = Employee::where('NIP',$request['NIP'])->first();
-            $token = $data->createToken('auth_token')->plainTextToken;
-            return $this->respondWithToken($token,$data);
-                
-            } 
-         catch (\Exception $th) {
-            return response()->json([
-                'message' => "Failed ".$th->errorInfo
-            ]);
-        }
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -100,23 +69,5 @@ class EmployeeController extends Controller
         //
     }
 
-    protected function respondWithToken($token, $data)
-    {
-        return response()->json([
-            'token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => Auth::factory()->getTTL() * 60,
-            'data' => $data
-        ], 200);
-    }
-
-    public function refresh()
-    {
-        $token = JWTAuth::getToken();
-        $newToken = JWTAuth::refresh($token, true);
-        return response()->json([
-            'code' => 200,
-            'access_token' => $newToken
-        ], 200);
-    }
+    
 }
