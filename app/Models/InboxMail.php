@@ -15,9 +15,9 @@ class InboxMail extends Model
     public function disposisi_inbox_mails(){
         return $this->hasMany(Disposisi_inbox_mail::class);
     }
-    public function Employees()
+    public function Users()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(User::class);
     }
     public function type_mails(){
         return $this->belongsTo(Type_Mail::class);

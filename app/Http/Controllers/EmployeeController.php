@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 // use Tymon\JWTAuth\Contracts\Providers\Auth;
@@ -36,7 +36,8 @@ class EmployeeController extends Controller
             // echo $credentials;
             // echo Hash::check($password,$data->password);
             // if (Hash::check($password, $data->password))
-            if ( !FacadesAuth::attempt($request->only('NIP','password')))
+            // echo Auth::attempt($credentials);
+            if ( !Auth::attempt($credentials))
             {
                 return response()->json([
                     'message' => Response::HTTP_UNAUTHORIZED,
@@ -104,7 +105,7 @@ class EmployeeController extends Controller
         return response()->json([
             'token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => FacadesAuth::factory()->getTTL() * 60,
+            'expires_in' => Auth::factory()->getTTL() * 60,
             'data' => $data
         ], 200);
     }

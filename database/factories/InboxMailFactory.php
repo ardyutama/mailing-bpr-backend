@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Employee;
 use App\Models\Type_Mail;
 use App\Models\TypeMail;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class InboxMailFactory extends Factory
@@ -16,7 +17,7 @@ class InboxMailFactory extends Factory
      */
     public function definition()
     {
-        $id_name = Employee::all()->pluck('id')->toArray();
+        $id_name = User::all()->pluck('employee_id')->toArray();
         $tipe_id = TypeMail::all()->pluck('id')->toArray();
         return [
             'tgl_surat_masuk' => $this->faker->dateTimeBetween('-1 week','now'),

@@ -17,7 +17,7 @@ class OutwardMailFactory extends Factory
      */
     public function definition()
     {
-        $employee_id = Employee::all()->pluck('id')->toArray();
+        $employee_id = User::all()->pluck('employee_id')->toArray();
         $tipe_id = TypeMail::all()->pluck('id')->toArray();
         return [
             'tgl_surat_keluar' => $this->faker->dateTimeBetween('-1 week', 'now'),

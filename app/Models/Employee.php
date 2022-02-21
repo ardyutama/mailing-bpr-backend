@@ -11,11 +11,9 @@ class Employee extends Authenticatable implements JWTSubject
 {
 
     protected $fillable = [
-        'first_name','last_name','NIP','departement_id','role_id'
+        'first_name','last_name','departement_id','role_id'
     ];
-    protected $hidden = [
-        'password',
-    ];
+    
     public function getJWTCustomClaims()
     {
         return [];
@@ -34,17 +32,9 @@ class Employee extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(Departement::class);
     }
-    public function inboxMails()
-    {
-        return $this->hasMany(InboxMail::class);
-    }
-    public function outwardMails()
-    {
-        return $this->hasMany(OutwardMail::class);
-    }
-    public function dispositionMails()
-    {
-        return $this->hasMany(DispositionMail::class);
+    
+    public function users(){
+        return $this->belongsTo(User::class);
     }
     
 }

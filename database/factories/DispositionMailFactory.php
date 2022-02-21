@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Employee;
 use App\Models\InboxMail;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DispositionMailFactory extends Factory
@@ -15,7 +16,7 @@ class DispositionMailFactory extends Factory
      */
     public function definition()
     {
-        $id_name = Employee::all()->pluck('id')->toArray();
+        $id_name = User::all()->pluck('employee_id')->toArray();
         $id_mail =InboxMail::all()->pluck('id')->toArray();
         return [
             'tgl_isi' => $this->faker->dateTimeBetween('-1 week', 'now'),

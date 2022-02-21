@@ -20,9 +20,9 @@ class CreateInboxMailsTable extends Migration
             $table->foreignId('tipe_surat_id')->nullable()->constrained('type_mails');
             $table->enum('sifat_surat', ['Terbuka', 'Rahasia', 'Urgent']);
             $table->boolean('isOpened');
-            $table->foreignId('pengirim_surat')->nullable()->constrained('employees');
-            $table->foreignId('penerima_surat')->nullable()->constrained('employees');
-            $table->foreignId('creator_id')->nullable() -> constrained('employees');
+            $table->foreignId('pengirim_surat')->nullable()->constrained('users');
+            $table->foreignId('penerima_surat')->nullable()->constrained('users');
+            $table->foreignId('creator_id')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

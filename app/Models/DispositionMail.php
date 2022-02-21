@@ -15,8 +15,8 @@ class DispositionMail extends Model
     {
         return $this->belongsTo(InboxMail::class);
     }
-    public function Employees()
+    public function Users()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(User::class);
     }
 }
