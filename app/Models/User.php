@@ -3,18 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class User extends Model
+class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
     protected $fillable = [
         'NIP','employee_id','password'
     ];
     protected $hidden = [
         'password',
     ];
-    
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
     public function inboxMails()
     {
         return $this->hasMany(InboxMail::class);
@@ -27,8 +38,11 @@ class User extends Model
     {
         return $this->hasMany(DispositionMail::class);
     }
-    public function Employees()
+    public function employees()
     {
         return $this->belongsTo(Employee::class);
     }
+
 }
+
+

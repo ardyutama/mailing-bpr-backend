@@ -32,9 +32,8 @@ class Employee extends Model
     {
         return $this->belongsTo(Departement::class);
     }
-    
     public function users(){
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }
     
 }

@@ -12,11 +12,11 @@ class TypeMail extends Model
     protected $fillable = [
         'type_name'
     ];
-    public function InboxMails()
+    public function inboxMails()
     {
         return $this->hasMany(InboxMail::class);
     }
-    public function OutwardMails()
+    public function outwardMails()
     {
         return $this->hasMany(OutwardMail::class);
     }

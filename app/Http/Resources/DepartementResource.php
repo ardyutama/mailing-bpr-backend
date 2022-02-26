@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class InboxResource extends ResourceCollection
+class DepartementResource extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,6 +14,9 @@ class InboxResource extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'departement_name' => $this->departement_name,
+        ];
     }
 }

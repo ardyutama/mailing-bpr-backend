@@ -11,11 +11,11 @@ class OutwardMail extends Model
     protected $fillable = [
         'tgl_surat_keluar', 'perihal', 'tipe_surat_id', 'sifat_surat', 'pengirim_surat', 'penerima_surat','approver', 'creator_id',
     ];
-    public function Type_Mails(){
-        return $this->belongsTo(Type_Mail::class);
+    public function typeMails(){
+        return $this->belongsTo(TypeMail::class);
     }
 
-    public function Users()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }

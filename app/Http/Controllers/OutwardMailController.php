@@ -6,6 +6,7 @@ use App\Models\OutwardMail;
 use App\Http\Requests\StoreOutwardMailRequest;
 use App\Http\Requests\UpdateOutwardMailRequest;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class OutwardMailController extends Controller
 {
@@ -24,9 +25,39 @@ class OutwardMailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->validate($request, [
+            'tgl_surat_masuk' => ['required', 'string'],
+            'perihal' => ['required', 'string'],
+            'tipe_surat_id' => ['required'],
+            'sifat_surat' => ['required'],
+            'pengirim_surat' => ['required'],
+            'penerima_surat' => ['required'],
+            'creator_id' => ['required'],
+        ]);
+
+        try {
+            $inbox = OutwardMail::create([
+                'tgl_surat_keluar' => $request->tgl_surat_masuk,
+                'perihal' => $request->perihal,
+                'tipe_surat_id' => $request->tipe_surat_id,
+                'sifat_surat' => $request->sifat_surat,
+                'pengirim_surat' => $request->pengirim_surat,
+                'penerima_surat' => $request->penerima_surat,
+                'approver' => $request->approver,
+                'creator_id' => $request->creator_id,
+            ]);
+            return response()->json([
+                'message' => Response::HTTP_CREATED,
+                'data' => $inbox,
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'failed created',
+                'message' => Response::HTTP_BAD_REQUEST
+            ]);
+        }
     }
 
     /**
@@ -71,9 +102,14 @@ class OutwardMailController extends Controller
      * @param  \App\Models\OutwardMail  $outwardMail
      * @return \Illuminate\Http\Response
      */
-    public function show(OutwardMail $outwardMail)
+    public function show($id)
     {
-        //
+        $outward = OutwardMail::where('pengirim_surat', $id)->get();
+
+        return response()->json([
+            'message' => Response::HTTP_ACCEPTED,
+            'data' => $outward,
+        ]);
     }
 
     /**

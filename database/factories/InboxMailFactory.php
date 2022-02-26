@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\DispositionMail;
 use App\Models\Employee;
 use App\Models\Type_Mail;
 use App\Models\TypeMail;
@@ -18,6 +19,7 @@ class InboxMailFactory extends Factory
     public function definition()
     {
         $id_name = User::all()->pluck('employee_id')->toArray();
+        $id_disposition = DispositionMail::all()->pluck('id')->toArray();
         $tipe_id = TypeMail::all()->pluck('id')->toArray();
         return [
             'tgl_surat_masuk' => $this->faker->dateTimeBetween('-1 week','now'),
@@ -29,6 +31,7 @@ class InboxMailFactory extends Factory
             'pengirim_surat'=> $this->faker->randomElement($id_name),
             'penerima_surat' => $this->faker->randomElement($id_name),
             'creator_id'=>  $this->faker->randomElement($id_name),
+            // 'disposition_id' =>  $this->faker->randomElement($id_disposition),
         ];
     }
 }

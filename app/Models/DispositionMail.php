@@ -11,11 +11,11 @@ class DispositionMail extends Model
     protected $fillable = [
         'tgl_isi','pengirim_id', 'penerima_id','isi_disposisi','inbox_id'
     ];
-    public function InboxMails()
+    public function inboxMails()
     {
-        return $this->belongsTo(InboxMail::class);
+        return $this->belongsTo(InboxMail::class,'id');
     }
-    public function Users()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
