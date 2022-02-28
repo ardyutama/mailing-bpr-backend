@@ -86,6 +86,7 @@ class InboxMailController extends Controller
     public function show($id)
     {
         $inbox = InboxMail::where('penerima_surat', $id)->get();
+        
         return response()->json([
             'message' => Response::HTTP_ACCEPTED,
             'data' => $inbox,

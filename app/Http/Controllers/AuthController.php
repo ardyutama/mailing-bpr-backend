@@ -30,7 +30,40 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'departement_id' => 'required',
+            'role_id' => 'required',
+            'NIP' => 'required',
+            'password' => 'required',
+        ]);
+
+        try {
+            $data =
+                $employee = Employee::create([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'departement_id' => $request->departement_id,
+                    'role_id' => $request->role_id,
+                ]);
+            $user = User::create([
+                'NIP' => $request->NIP,
+                'password' => Hash::make($request->password),
+                'employee_id' => $employee->id,
+            ]);
+            $token = $user->createToken('auth_token')->plainTextToken;
+            return response()->json([
+                'message' => Response::HTTP_CREATED,
+                'data' => $data,
+                'access_token' => $token,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'failed created',
+                'message' => 'Failed ' . $e,
+            ]);
+        }
     }
 
     /**
@@ -67,44 +100,6 @@ class AuthController extends Controller
         //
     }
 
-    public function register(Request $request)
-    {
-        $this->validate($request, [
-            'first_name' => ['required','string'],
-            'last_name' => ['required','string'],
-            'departement_id' => ['required'],
-            'role_id'=>['required'],
-            'NIP' => ['required'],
-            'password' => ['required'],
-        ]);
-
-        try {
-            $data = 
-            $employee = Employee::create([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'departement_id' => $request->departement_id,
-                'role_id' => $request->role_id,
-            ]);
-            $user = User::create([
-                    'NIP'=> $request->NIP,
-                    'password'=> Hash::make($request->password),
-                    'employee_id'=> $employee->id,
-                ]);
-                $token = $user->createToken('auth_token')->plainTextToken;
-                return response()->json([
-                    'message' => Response::HTTP_CREATED,
-                    'data' => $data,
-                    'access_token' => $token,
-                ]);
-            } catch (\Exception $e) {
-                return response()->json([
-                    'status' => 'failed created',
-                    'message' => 'Failed ' .$e,
-                ]);
-            }
-    }
-
     public function login(Request $request)
     {
             $credentials = $request->only(['NIP','password']);
@@ -119,35 +114,31 @@ class AuthController extends Controller
 
                 return $this->respondWithToken($token, $nip);  
             
-        } 
-    
-          
+        }      
     protected function respondWithToken($token, $data)
     {
         return response()->json([
+            'token_type' => 'Bearer',
             'token' => $token,
-            'token_type' => 'bearer',
-            // 'expires_in' => auth()->factory()->getTTL() * 60,
             'data' => $data
         ], 200);
     }
 
-    public function refresh()
+    // public function refresh()
+    // {
+    //     $token = JWTAuth::getToken();
+    //     $newToken = JWTAuth::refresh($token, true);
+    //     return response()->json([
+    //         'code' => 200,
+    //         'access_token' => $newToken
+    //     ], 200);
+    // }
+    public function logout(User $user)
     {
-        $token = JWTAuth::getToken();
-        $newToken = JWTAuth::refresh($token, true);
-        return response()->json([
-            'code' => 200,
-            'access_token' => $newToken
-        ], 200);
-    }
-    public function logout(Request $request)
-    {
-        Auth::logout();
+        $user->tokens()->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        // auth()->user()->tokens()->delete();
-        return redirect('/login');
+        return response()->json([
+            'message' => 'Logout Suucessfull'
+        ]);
     }
 }
