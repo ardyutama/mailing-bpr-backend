@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TypeMail;
 use App\Http\Requests\StoreTypeMailRequest;
 use App\Http\Requests\UpdateTypeMailRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class TypeMailController extends Controller
 {
@@ -15,7 +16,12 @@ class TypeMailController extends Controller
      */
     public function index()
     {
-        //
+        $typeMail = TypeMail::all();
+        
+        return response()->json([
+            'message' => Response::HTTP_CREATED,
+            'data' => $typeMail,
+        ]);
     }
 
     /**

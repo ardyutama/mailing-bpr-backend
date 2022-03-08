@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\InboxMailController;
 use App\Http\Controllers\OutwardMailController;
+use App\Http\Controllers\TypeMailController;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,15 +36,22 @@ Route::controller(AuthController::class)->group(function () {
 });
 // Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/inbox', [InboxMailController::class, 'index']);
-    
     Route::controller(InboxMailController::class)->group(function(){
         Route::get('/inbox/{id}','show');
         Route::get('/inbox/{id}/detail','detail');
         Route::post('/inbox', 'create');
     });
-    
     Route::controller(OutwardMailController::class)->group(function () {
         Route::get('/outward/{id}', 'show');
         Route::post('/outward', 'create');
+    });
+    Route::controller(EmployeeController::class)->group(function () {
+        Route::get('/employee', 'index');
+        Route::get('/employee/{id}', 'show');
+        // Route::post('/outward', 'create');
+    });
+    Route::controller(TypeMailController::class)->group(function () {
+        Route::get('/typemail', 'index');
+        // Route::post('/outward', 'create');
     });
 // });

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\OutwardMail;
 use App\Http\Requests\StoreOutwardMailRequest;
 use App\Http\Requests\UpdateOutwardMailRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class OutwardMailController extends Controller
@@ -27,8 +29,9 @@ class OutwardMailController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
-            'tgl_surat_masuk' => ['required', 'string'],
+            'tgl_surat_keluar' => ['required'],
             'perihal' => ['required', 'string'],
             'tipe_surat_id' => ['required'],
             'sifat_surat' => ['required'],
@@ -39,7 +42,8 @@ class OutwardMailController extends Controller
 
         try {
             $inbox = OutwardMail::create([
-                'tgl_surat_keluar' => $request->tgl_surat_masuk,
+                
+                'tgl_surat_keluar' => Carbon::parse($request->tgl_surat_keluar),
                 'perihal' => $request->perihal,
                 'tipe_surat_id' => $request->tipe_surat_id,
                 'sifat_surat' => $request->sifat_surat,
@@ -52,9 +56,9 @@ class OutwardMailController extends Controller
                 'message' => Response::HTTP_CREATED,
                 'data' => $inbox,
             ]);
-        } catch (\Throwable $th) {
+        } catch (\Exception $th) {
             return response()->json([
-                'status' => 'failed created',
+                'status' => 'failed created' .$th,
                 'message' => Response::HTTP_BAD_REQUEST
             ]);
         }
@@ -105,6 +109,19 @@ class OutwardMailController extends Controller
     public function show($id)
     {
         $outward = OutwardMail::where('pengirim_surat', $id)->get();
+        return response()->json([
+            'message' => Response::HTTP_ACCEPTED,
+            'data' => $outward,
+        ]);
+        // $outward = DB::table('employees')
+        // ->join('id', 'employees.id', '=', 'pengirim_surat')
+        // ->join('id', 'employees.id', '=', 'penerima_surat')
+        // ->join('id', 'employees.id', '=', 'approver')
+        // ->join('id', 'employees.id', '=', 'creator_id')
+        // ->join('id', 'employees.id', '=', 'pengirim_surat')
+        // ->select('employees.id', 'employees.first_name', 'employees.last_name')
+        // ->where('pengirim_surat',$id)
+        // ->get();
 
         return response()->json([
             'message' => Response::HTTP_ACCEPTED,
