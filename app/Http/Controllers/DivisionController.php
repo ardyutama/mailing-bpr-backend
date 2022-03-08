@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TypeMail;
-use App\Http\Requests\StoreTypeMailRequest;
-use App\Http\Requests\UpdateTypeMailRequest;
-use Symfony\Component\HttpFoundation\Response;
+use App\Models\Division;
+use App\Http\Requests\StoreDivisionRequest;
+use App\Http\Requests\UpdateDivisionRequest;
 
-class TypeMailController extends Controller
+class DivisionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +15,7 @@ class TypeMailController extends Controller
      */
     public function index()
     {
-        $typeMail = TypeMail::all();
-        
-        return response()->json([
-            'message' => Response::HTTP_CREATED,
-            'data' => $typeMail,
-        ]);
+        //
     }
 
     /**
@@ -37,10 +31,10 @@ class TypeMailController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTypeMailRequest  $request
+     * @param  \App\Http\Requests\StoreDivisionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTypeMailRequest $request)
+    public function store(StoreDivisionRequest $request)
     {
         //
     }
@@ -48,10 +42,10 @@ class TypeMailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TypeMail  $typeMail
+     * @param  \App\Models\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function show(TypeMail $typeMail)
+    public function show(Division $division)
     {
         //
     }
@@ -59,10 +53,10 @@ class TypeMailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TypeMail  $typeMail
+     * @param  \App\Models\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function edit(TypeMail $typeMail)
+    public function edit(Division $division)
     {
         //
     }
@@ -70,11 +64,11 @@ class TypeMailController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTypeMailRequest  $request
-     * @param  \App\Models\TypeMail  $typeMail
+     * @param  \App\Http\Requests\UpdateDivisionRequest  $request
+     * @param  \App\Models\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTypeMailRequest $request, TypeMail $typeMail)
+    public function update(UpdateDivisionRequest $request, Division $division)
     {
         //
     }
@@ -82,10 +76,10 @@ class TypeMailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TypeMail  $typeMail
+     * @param  \App\Models\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TypeMail $typeMail)
+    public function destroy(Division $division)
     {
         //
     }

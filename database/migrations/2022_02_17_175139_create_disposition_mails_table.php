@@ -15,11 +15,11 @@ class CreateDispositionMailsTable extends Migration
     {
         Schema::create('disposition_mails', function (Blueprint $table) {
                 $table->id();
-                $table->date('tgl_isi');
-                $table->foreignId('pengirim_id')->nullable()->constrained('employees');
-                $table->foreignId('penerima_id')->nullable()->constrained('employees');
-                $table->text('isi_disposisi');
-                $table->foreignId('inbox_id')->nullable()->constrained('inbox_mails');
+                $table->foreignId('register_id')->nullable()->constrained('disposition_registers');
+                $table->date('tgl_disposisi');
+                $table->foreignId('creator_id')->nullable()->constrained('users');
+                $table->foreignId('disposisiTo_id')->nullable()->constrained('users');
+                $table->text('comment');
                 $table->timestamps();
         });
     }

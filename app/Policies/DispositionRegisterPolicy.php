@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\DispositionRegister;
 use App\Models\User;
-use App\Models\surat_masuk;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class SuratMasukPolicy
+class DispositionRegisterPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class SuratMasukPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\surat_masuk  $suratMasuk
+     * @param  \App\Models\DispositionRegister  $dispositionRegister
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, surat_masuk $suratMasuk)
+    public function view(User $user, DispositionRegister $dispositionRegister)
     {
         //
     }
@@ -48,10 +48,10 @@ class SuratMasukPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\surat_masuk  $suratMasuk
+     * @param  \App\Models\DispositionRegister  $dispositionRegister
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, surat_masuk $suratMasuk)
+    public function update(User $user, DispositionRegister $dispositionRegister)
     {
         //
     }
@@ -60,10 +60,10 @@ class SuratMasukPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\surat_masuk  $suratMasuk
+     * @param  \App\Models\DispositionRegister  $dispositionRegister
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, surat_masuk $suratMasuk)
+    public function delete(User $user, DispositionRegister $dispositionRegister)
     {
         //
     }
@@ -72,10 +72,10 @@ class SuratMasukPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\surat_masuk  $suratMasuk
+     * @param  \App\Models\DispositionRegister  $dispositionRegister
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, surat_masuk $suratMasuk)
+    public function restore(User $user, DispositionRegister $dispositionRegister)
     {
         //
     }
@@ -84,10 +84,10 @@ class SuratMasukPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\surat_masuk  $suratMasuk
+     * @param  \App\Models\DispositionRegister  $dispositionRegister
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, surat_masuk $suratMasuk)
+    public function forceDelete(User $user, DispositionRegister $dispositionRegister)
     {
         //
     }

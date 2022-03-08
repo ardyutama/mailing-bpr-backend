@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepartementsTable extends Migration
+class CreateDispositionRegistersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateDepartementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('division', function (Blueprint $table) {
+        Schema::create('disposition_registers', function (Blueprint $table) {
             $table->id();
-            $table->string('division_name');
+            $table->date('tgl_register');
             $table->integer('no_register');
+            $table->foreignId('creator_id')->nullable()->constrained('users');
+            $table->foreignId('nota_id')->nullable()->constrained('disposition_mails');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateDepartementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departements');
+        Schema::dropIfExists('disposition_registers');
     }
 }

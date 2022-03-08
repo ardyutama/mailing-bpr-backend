@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DispositionMail;
-use App\Http\Requests\StoreDispositionMailRequest;
-use App\Http\Requests\UpdateDispositionMailRequest;
+use App\Models\DispositionRegister;
+use App\Http\Requests\StoreDispositionRegisterRequest;
+use App\Http\Requests\UpdateDispositionRegisterRequest;
 
-class DispositionMailController extends Controller
+class DispositionRegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class DispositionMailController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreDispositionMailRequest  $request
+     * @param  \App\Http\Requests\StoreDispositionRegisterRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDispositionMailRequest $request)
+    public function store(StoreDispositionRegisterRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class DispositionMailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DispositionMail  $dispositionMail
+     * @param  \App\Models\DispositionRegister  $dispositionRegister
      * @return \Illuminate\Http\Response
      */
-    public function show(DispositionMail $dispositionMail)
+    public function show(DispositionRegister $dispositionRegister)
     {
         //
     }
@@ -53,10 +53,10 @@ class DispositionMailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DispositionMail  $dispositionMail
+     * @param  \App\Models\DispositionRegister  $dispositionRegister
      * @return \Illuminate\Http\Response
      */
-    public function edit(DispositionMail $dispositionMail)
+    public function edit(DispositionRegister $dispositionRegister)
     {
         //
     }
@@ -64,11 +64,11 @@ class DispositionMailController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateDispositionMailRequest  $request
-     * @param  \App\Models\DispositionMail  $dispositionMail
+     * @param  \App\Http\Requests\UpdateDispositionRegisterRequest  $request
+     * @param  \App\Models\DispositionRegister  $dispositionRegister
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDispositionMailRequest $request, DispositionMail $dispositionMail)
+    public function update(UpdateDispositionRegisterRequest $request, DispositionRegister $dispositionRegister)
     {
         //
     }
@@ -76,10 +76,10 @@ class DispositionMailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DispositionMail  $dispositionMail
+     * @param  \App\Models\DispositionRegister  $dispositionRegister
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DispositionMail $dispositionMail)
+    public function destroy(DispositionRegister $dispositionRegister)
     {
         //
     }

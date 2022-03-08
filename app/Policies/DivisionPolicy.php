@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\InboxMail;
+use App\Models\Division;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class InboxMailPolicy
+class DivisionPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class InboxMailPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\InboxMail  $inboxMail
+     * @param  \App\Models\Division  $division
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, InboxMail $inboxMail)
+    public function view(User $user, Division $division)
     {
         //
     }
@@ -48,10 +48,10 @@ class InboxMailPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\InboxMail  $inboxMail
+     * @param  \App\Models\Division  $division
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, InboxMail $inboxMail)
+    public function update(User $user, Division $division)
     {
         //
     }
@@ -60,10 +60,10 @@ class InboxMailPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\InboxMail  $inboxMail
+     * @param  \App\Models\Division  $division
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, InboxMail $inboxMail)
+    public function delete(User $user, Division $division)
     {
         //
     }
@@ -72,10 +72,10 @@ class InboxMailPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\InboxMail  $inboxMail
+     * @param  \App\Models\Division  $division
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, InboxMail $inboxMail)
+    public function restore(User $user, Division $division)
     {
         //
     }
@@ -84,10 +84,10 @@ class InboxMailPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\InboxMail  $inboxMail
+     * @param  \App\Models\Division  $division
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, InboxMail $inboxMail)
+    public function forceDelete(User $user, Division $division)
     {
         //
     }

@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
+use App\Models\Nota;
 use App\Models\User;
-use App\Models\disposisi_inbox_mail;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class DisposisiInboxMailPolicy
+class NotaPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class DisposisiInboxMailPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\disposisi_inbox_mail  $disposisiInboxMail
+     * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, disposisi_inbox_mail $disposisiInboxMail)
+    public function view(User $user, Nota $nota)
     {
         //
     }
@@ -48,10 +48,10 @@ class DisposisiInboxMailPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\disposisi_inbox_mail  $disposisiInboxMail
+     * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, disposisi_inbox_mail $disposisiInboxMail)
+    public function update(User $user, Nota $nota)
     {
         //
     }
@@ -60,10 +60,10 @@ class DisposisiInboxMailPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\disposisi_inbox_mail  $disposisiInboxMail
+     * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, disposisi_inbox_mail $disposisiInboxMail)
+    public function delete(User $user, Nota $nota)
     {
         //
     }
@@ -72,10 +72,10 @@ class DisposisiInboxMailPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\disposisi_inbox_mail  $disposisiInboxMail
+     * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, disposisi_inbox_mail $disposisiInboxMail)
+    public function restore(User $user, Nota $nota)
     {
         //
     }
@@ -84,10 +84,10 @@ class DisposisiInboxMailPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\disposisi_inbox_mail  $disposisiInboxMail
+     * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, disposisi_inbox_mail $disposisiInboxMail)
+    public function forceDelete(User $user, Nota $nota)
     {
         //
     }

@@ -26,21 +26,25 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    public function inboxMails()
+    public function nota()
     {
-        return $this->hasMany(InboxMail::class);
-    }
-    public function outwardMails()
-    {
-        return $this->hasMany(OutwardMail::class);
+        return $this->hasMany(Nota::class);
     }
     public function dispositionMails()
     {
         return $this->hasMany(DispositionMail::class);
     }
-    public function employees()
+    public function dispositionRegisters()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->hasMany(DispositionRegister::class);
+    }
+    public function roles()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    public function divisions()
+    {
+        return $this->belongsTo(Division::class);
     }
 
 }

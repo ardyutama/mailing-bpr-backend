@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\departement;
-use App\Http\Requests\StoredepartementRequest;
-use App\Http\Requests\UpdatedepartementRequest;
+use App\Models\Nota;
+use App\Http\Requests\StoreNotaRequest;
+use App\Http\Requests\UpdateNotaRequest;
 
-class DepartementController extends Controller
+class NotaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class DepartementController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoredepartementRequest  $request
+     * @param  \App\Http\Requests\StoreNotaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoredepartementRequest $request)
+    public function store(StoreNotaRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class DepartementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\departement  $departement
+     * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function show(departement $departement)
+    public function show(Nota $nota)
     {
         //
     }
@@ -53,10 +53,10 @@ class DepartementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\departement  $departement
+     * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function edit(departement $departement)
+    public function edit(Nota $nota)
     {
         //
     }
@@ -64,11 +64,11 @@ class DepartementController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatedepartementRequest  $request
-     * @param  \App\Models\departement  $departement
+     * @param  \App\Http\Requests\UpdateNotaRequest  $request
+     * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatedepartementRequest $request, departement $departement)
+    public function update(UpdateNotaRequest $request, Nota $nota)
     {
         //
     }
@@ -76,10 +76,10 @@ class DepartementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\departement  $departement
+     * @param  \App\Models\Nota  $nota
      * @return \Illuminate\Http\Response
      */
-    public function destroy(departement $departement)
+    public function destroy(Nota $nota)
     {
         //
     }

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TypeMailFactory extends Factory
+class DispositionRegisterFactory extends Factory
 {
     /**
      * Define the model's default state.
