@@ -10,7 +10,7 @@ class DispositionRegister extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tgl_register', 'no_register', 'creator_id', 'nota_id',
+        'tgl_register', 'creator_id', 'nota_id',
     ];
     public function dispositionMails()
     {

@@ -10,7 +10,7 @@ class Nota extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tgl_nota', 'no_nota', 'perihal', 'approver_id', 'isApproved', 'departement_id', 'receiver_id', 'creator_id', 'openedAt', 'lastOpened_id'
+        'tgl_nota', 'no_nota', 'perihal', 'approver_id', 'isApproved', 'division_id', 'receiver_id', 'creator_id', 'openedAt','lastOpened_id'
     ];
     public function dispositionRegisters()
     {

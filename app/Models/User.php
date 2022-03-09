@@ -12,7 +12,7 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $fillable = [
-        'NIP','employee_id','password'
+        'first_name','last_name','division_id','role_id','NIP','password'
     ];
     protected $hidden = [
         'password',
@@ -46,7 +46,6 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(Division::class);
     }
-
 }
 
 

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Division;
+use App\Models\Nota;
 use App\Models\OutwardMail;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -16,13 +18,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            DepartementSeeder::class,
             RoleSeeder::class,
-            EmployeeSeeder::class,
+            DivisionSeeder::class,
             UserSeeder::class,
-            TypeMailSeeder::class,
-            InboxMailSeeder::class,
-            OutwardMailSeeder::class,
+            NotaSeeder::class,
+            DispositionRegisterSeeder::class,
             DispositionMailSeeder::class,
         ]);
     }

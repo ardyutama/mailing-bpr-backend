@@ -20,9 +20,10 @@ class CreateNotasTable extends Migration
             $table->text('perihal');
             $table->foreignId('creator_id')->nullable()->constrained('users');
             $table->foreignId('approver_id')->nullable()->constrained('users');
-            $table->foreignId('departement_id')->nullable()->constrained('users');
+            $table->foreignId('division_id')->nullable()->constrained('users');
             $table->foreignId('receiver_id')->nullable()->constrained('users');
-            $table->date('openedAt');
+            $table->boolean('isApproved');
+            $table->dateTime('openedAt');
             $table->foreignId('lastOpened_id')->nullable()->constrained('users');
             $table->timestamps();
         });

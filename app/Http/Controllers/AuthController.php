@@ -33,29 +33,25 @@ class AuthController extends Controller
         $this->validate($request, [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'departement_id' => 'required',
+            'division_id' => 'required',
             'role_id' => 'required',
             'NIP' => 'required',
             'password' => 'required',
         ]);
 
         try {
-            $data =
-                $employee = Employee::create([
+            $user = User::create([
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
-                    'departement_id' => $request->departement_id,
+                    'division_id' => $request->division_id,
                     'role_id' => $request->role_id,
+                    'NIP' => $request->NIP,
+                    'password' => Hash::make($request->password),
                 ]);
-            $user = User::create([
-                'NIP' => $request->NIP,
-                'password' => Hash::make($request->password),
-                'employee_id' => $employee->id,
-            ]);
             $token = $user->createToken('auth_token')->plainTextToken;
             return response()->json([
                 'message' => Response::HTTP_CREATED,
-                'data' => $data,
+                'data' => $user,
                 'access_token' => $token,
             ]);
         } catch (\Exception $e) {

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DispositionRegister;
 use Illuminate\Database\Seeder;
 
 class DispositionRegisterSeeder extends Seeder
@@ -13,6 +14,6 @@ class DispositionRegisterSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DispositionRegister::factory(5)->create();
     }
 }

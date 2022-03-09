@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\DispositionRegister;
 use App\Models\Employee;
 use App\Models\InboxMail;
 use App\Models\User;
@@ -16,14 +17,15 @@ class DispositionMailFactory extends Factory
      */
     public function definition()
     {
-        $id_name = User::all()->pluck('employee_id')->toArray();
-        $id_mail =InboxMail::all()->pluck('id')->toArray();
+        $id_name = User::all()->pluck('id')->toArray();
+        // $id_mail =InboxMail::all()->pluck('id')->toArray();
+        $id_register = DispositionRegister::all()->pluck('id')->toArray();
         return [
-            'tgl_isi' => $this->faker->dateTimeBetween('-1 week', 'now'),
-            'pengirim_id' => $this->faker->randomElement($id_name),
-            'penerima_id' => $this->faker->randomElement($id_name),
-            'isi_disposisi'=> $this->faker->paragraph(mt_rand(3, 5)),
-            'inbox_id' => $this->faker->randomElement($id_mail),
+            'register_id' => $this->faker->randomElement($id_register),
+            'tgl_disposisi' => $this->faker->dateTimeBetween('-1 week', 'now'),
+            'creator_id' => $this->faker->randomElement($id_name),
+            'disposisiTo_id' => $this->faker->randomElement($id_name),
+            'comment'=> $this->faker->paragraph(mt_rand(3, 5)),
         ];
     }
 }

@@ -16,9 +16,9 @@ class CreateDispositionRegistersTable extends Migration
         Schema::create('disposition_registers', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_register');
-            $table->integer('no_register');
+            // $table->integer('no_register');
             $table->foreignId('creator_id')->nullable()->constrained('users');
-            $table->foreignId('nota_id')->nullable()->constrained('disposition_mails');
+            $table->foreignId('nota_id')->nullable()->constrained('notas');
             $table->timestamps();
         });
     }

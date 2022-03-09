@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->foreignId('departement_id')->constrained('departements');
+            $table->foreignId('division_id')->constrained('divisions');
             $table->foreignId('role_id')->nullable()->constrained('roles');
             $table->string('NIP')->unique();
             $table->string('password');

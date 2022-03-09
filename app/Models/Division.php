@@ -10,7 +10,7 @@ class Division extends Model
     use HasFactory;
 
     protected $fillable = [
-        'division_name', 'no_register'
+        'division_name', 
     ];
 
     public function users()
