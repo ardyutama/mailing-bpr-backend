@@ -16,19 +16,19 @@ class DivisionSeeder extends Seeder
     {
         $data = [
             [
-                'division_name' => 'IT'
+                'name' => 'IT'
             ],
             [
-                'division_name' => 'SDM'
+                'name' => 'SDM'
             ],
             [
-                'division_name' => 'Umum'
+                'name' => 'Umum'
             ],
             [
-                'division_name' => 'Kesekretariatan'
+                'name' => 'Kesekretariatan'
             ],
             [
-                'division_name' => 'Public Relation'
+                'name' => 'Public Relation'
             ],
         ];
 

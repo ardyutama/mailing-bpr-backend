@@ -16,25 +16,25 @@ class RoleSeeder extends Seeder
     {
         $data = [
             [
-                'roles_name' => 'Direktur Utama'
+                'name' => 'Direktur Utama'
             ],
             [
-                'roles_name' => 'Direksi'
+                'name' => 'Direksi'
             ],
             [
-                'roles_name' => 'Pimpinan Divisi'
+                'name' => 'Pimpinan Divisi'
             ],
             [
-                'roles_name' => 'Pimpinan Sub Divisi'
+                'name' => 'Pimpinan Sub Divisi'
             ],
             [
-                'roles_name' => 'Senior Officer'
+                'name' => 'Senior Officer'
             ],
             [
-                'roles_name' => 'Penyelia'
+                'name' => 'Penyelia'
             ],
             [
-                'roles_name' => 'Staff'
+                'name' => 'Staff'
             ],
         ];
 

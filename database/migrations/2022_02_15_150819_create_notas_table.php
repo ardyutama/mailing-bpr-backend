@@ -16,14 +16,11 @@ class CreateNotasTable extends Migration
         Schema::create('notas', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_nota');
-            $table->string('no_nota');
+            $table->string('no_nota')->unique();
             $table->text('perihal');
             $table->foreignId('creator_id')->nullable()->constrained('users');
-            $table->foreignId('approver_id')->nullable()->constrained('users');
-            $table->foreignId('division_id')->nullable()->constrained('users');
             $table->foreignId('receiver_id')->nullable()->constrained('users');
-            $table->boolean('isApproved');
-            $table->dateTime('openedAt');
+            $table->dateTime('openedAt')->nullable();
             $table->foreignId('lastOpened_id')->nullable()->constrained('users');
             $table->timestamps();
         });

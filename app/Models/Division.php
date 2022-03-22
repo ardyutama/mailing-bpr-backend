@@ -10,11 +10,11 @@ class Division extends Model
     use HasFactory;
 
     protected $fillable = [
-        'division_name', 
+        'name', 
     ];
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class,'division_id','id');
     }
 }

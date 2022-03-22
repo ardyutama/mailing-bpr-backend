@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Division;
 use App\Http\Requests\StoreDivisionRequest;
 use App\Http\Requests\UpdateDivisionRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class DivisionController extends Controller
 {
@@ -15,7 +16,8 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        //
+        
+
     }
 
     /**
@@ -34,10 +36,6 @@ class DivisionController extends Controller
      * @param  \App\Http\Requests\StoreDivisionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDivisionRequest $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -45,9 +43,14 @@ class DivisionController extends Controller
      * @param  \App\Models\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function show(Division $division)
+    public function show($user_id)
     {
-        //
+        $division = Division::with('users')->find($user_id);
+        // $nota = $division->user;
+        return response()->json([
+            'message' => Response::HTTP_ACCEPTED,
+            'data' => $division,
+        ]);
     }
 
     /**
@@ -68,10 +71,6 @@ class DivisionController extends Controller
      * @param  \App\Models\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDivisionRequest $request, Division $division)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

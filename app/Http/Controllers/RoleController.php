@@ -34,10 +34,6 @@ class RoleController extends Controller
      * @param  \App\Http\Requests\StoreRoleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRoleRequest $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -68,10 +64,7 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRoleRequest $request, Role $role)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.

@@ -99,7 +99,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
             $credentials = $request->only(['NIP','password']);
-
+            
             if (! Auth::attempt($credentials)){
                 return response()->json([
                     'message' => Response::HTTP_UNAUTHORIZED,
@@ -109,7 +109,6 @@ class AuthController extends Controller
                 $token = $nip->createToken('auth_token')->plainTextToken;
 
                 return $this->respondWithToken($token, $nip);  
-            
         }      
     protected function respondWithToken($token, $data)
     {
@@ -119,16 +118,6 @@ class AuthController extends Controller
             'data' => $data
         ], 200);
     }
-
-    // public function refresh()
-    // {
-    //     $token = JWTAuth::getToken();
-    //     $newToken = JWTAuth::refresh($token, true);
-    //     return response()->json([
-    //         'code' => 200,
-    //         'access_token' => $newToken
-    //     ], 200);
-    // }
     public function logout(User $user)
     {
         $user->tokens()->delete();

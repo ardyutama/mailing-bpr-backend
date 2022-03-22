@@ -10,15 +10,28 @@ class Nota extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tgl_nota', 'no_nota', 'perihal', 'approver_id', 'isApproved', 'division_id', 'receiver_id', 'creator_id', 'openedAt','lastOpened_id'
+        'tgl_nota', 
+        'no_nota', 
+        'perihal', 
+        'receiver_id', 
+        'creator_id', 
+        'openedAt',
+        'lastOpened_id'
     ];
     public function dispositionRegisters()
     {
         return $this->hasOne(DispositionRegister::class, 'nota_id');
     }
-    public function users()
+    public function usersReceiver()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'receiver_id');
     }
-
+    public function usersCreator()
+    {
+        return $this->belongsTo(User::class, 'creator_id','id');
+    }
+    public function approverNota()
+    {
+        return $this->hasMany(Approver::class,'nota_id');
+    }
 }

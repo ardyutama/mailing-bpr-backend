@@ -13,10 +13,14 @@ class DispositionMail extends Model
     ];
     public function dispositionRegisters()
     {
-        return $this->belongsTo(DispositionRegister::class,'id');
+        return $this->belongsTo(DispositionRegister::class,'register_id');
     }
-    public function users()
+    public function creators()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'creator_id');
+    }
+    public function dispositionTo()
+    {
+        return $this->belongsTo(User::class, 'disposisiTo_id');
     }
 }

@@ -26,9 +26,21 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    public function nota()
+    // public function nota()
+    // {
+    //     return $this->hasMany(Nota::class,'id');
+    // }
+    public function notaCreator()
     {
-        return $this->hasMany(Nota::class);
+        return $this->hasMany(Nota::class, 'creator_id',);
+    }
+    public function notaReceiver()
+    {
+        return $this->hasMany(Nota::class, 'receiver_id');
+    }
+    public function notaOpenedAt()
+    {
+        return $this->hasMany(Nota::class, 'openedAt');
     }
     public function dispositionMails()
     {
@@ -40,11 +52,15 @@ class User extends Authenticatable implements JWTSubject
     }
     public function roles()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class,'role_id');
     }
     public function divisions()
     {
-        return $this->belongsTo(Division::class);
+        return $this->belongsTo(Division::class,'division_id');
+    }
+    public function approverUsers()
+    {
+        return $this->hasOne(Approver::class, 'user_id');
     }
 }
 

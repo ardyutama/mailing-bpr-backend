@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Approver;
 use App\Models\Division;
 use App\Models\Nota;
 use App\Models\OutwardMail;
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             DivisionSeeder::class,
             UserSeeder::class,
             NotaSeeder::class,
+            ApproverSeeder::class,
             DispositionRegisterSeeder::class,
             DispositionMailSeeder::class,
         ]);

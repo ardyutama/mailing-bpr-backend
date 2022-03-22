@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateApproversTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('approvers', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->default('staff');
+            $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->boolean('isApproved')->nullable();
+            $table->dateTime('approved_time')->nullable();
+            $table->foreignId('nota_id')->nullable()->constrained('notas');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('approvers');
     }
 }

@@ -14,14 +14,14 @@ class DispositionRegister extends Model
     ];
     public function dispositionMails()
     {
-        return $this->hasMany(DispositionMail::class, 'register_id');
+        return $this->hasMany(DispositionMail::class,'register_id','id');
     }
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'creator_id');
     }
     public function nota()
     {
-        return $this->belongsTo(Nota::class);
+        return $this->belongsTo(Nota::class,'nota_id');
     }
 }
