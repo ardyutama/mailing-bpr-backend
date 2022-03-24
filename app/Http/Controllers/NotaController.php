@@ -194,4 +194,16 @@ class NotaController extends Controller
             'data' => $findUser,
         ]);
     }
+    public function approver(Nota $nota , $id) {
+        $show = $nota::with(['approverNota' => function ($query) use($id){
+            $query->where('user_id', $id);
+        }])
+        ->with(['approverNota.users'])
+        ->get();
+
+        return response()->json([
+            'message' => Response::HTTP_ACCEPTED,
+            'data' => $show,
+        ]);
+    }
 }

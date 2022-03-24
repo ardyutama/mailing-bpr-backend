@@ -12,10 +12,10 @@ class Approver extends Model
     protected $fillable = ['user_id', 'isApproved','approved_time','nota_id'];
     public function notas()
     {
-        return $this->belongsTo(Nota::class,'nota_id','id');
+        return $this->belongsTo(Nota::class,'nota_id','id')->orderBy('tgl_nota','desc');
     }
     public function users()
     {
-        return $this->belongsTo(User::class, 'user_id','id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

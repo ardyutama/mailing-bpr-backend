@@ -32,6 +32,6 @@ class Nota extends Model
     }
     public function approverNota()
     {
-        return $this->hasMany(Approver::class,'nota_id');
+        return $this->hasMany(Approver::class,'nota_id','id');
     }
 }

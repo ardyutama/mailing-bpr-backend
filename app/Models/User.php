@@ -60,7 +60,7 @@ class User extends Authenticatable implements JWTSubject
     }
     public function approverUsers()
     {
-        return $this->hasOne(Approver::class, 'user_id');
+        return $this->hasOne(Approver::class, 'user_id','id');
     }
 }
 

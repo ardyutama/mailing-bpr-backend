@@ -49,7 +49,7 @@ Route::controller(NotaController::class)->group(function(){
         Route::get('/nota/keluar/{id}', 'notaKeluar');
         Route::post('/nota', 'create');
         Route::get('/coba/keluar/{id}', 'notaCoba');
-        Route::get('/approve/{user_id}', 'coba');
+        // Route::get('/approver/{user_id}', 'approver');
 });
 
 Route::controller(DispositionRegisterController::class)->group(function () {
@@ -74,7 +74,8 @@ Route::controller(DivisionController::class)->group(function () {
 
 Route::controller(ApproverController::class)->group(function () {
     Route::post('/approver','create');
-    Route::get('/approver/{nota_id}','show');
+    Route::get('/approver/{user_id}','show');
+    Route::post('/approver/{user_id}/{nota_id}','update');
 });
 // Route::group(['middleware' => ['auth:sanctum']], function() {
     // Route::get('/inbox', [InboxMailController::class, 'index']);
