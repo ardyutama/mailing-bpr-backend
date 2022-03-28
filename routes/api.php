@@ -47,6 +47,7 @@ Route::controller(NotaController::class)->group(function(){
         Route::get('/nota/keluar/{id}','show');
         Route::get('/nota/masuk/{id}', 'notaMasuk');
         Route::get('/nota/keluar/{id}', 'notaKeluar');
+        Route::get('/nota/pending/{id}', 'notaPending');
         Route::post('/nota', 'create');
         Route::get('/coba/keluar/{id}', 'notaCoba');
         // Route::get('/approver/{user_id}', 'approver');

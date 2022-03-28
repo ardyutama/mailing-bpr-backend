@@ -49,6 +49,7 @@ class NotaController extends Controller
                 'openedAt' => Carbon::parse($request->openedAt),
                 'lastOpened_id' => $request->lastOpened_id,
             ]);
+            $nota->save();
             
             return response()->json([
                 'message' => Response::HTTP_CREATED,
@@ -204,6 +205,33 @@ class NotaController extends Controller
         return response()->json([
             'message' => Response::HTTP_ACCEPTED,
             'data' => $show,
+        ]);
+    }
+    public function notaPending($division_id)
+    {
+        $nota = Nota::with(
+            [
+                'usersCreator',
+                'usersReceiver',
+                'usersCreator.divisions:id,name as divisions_name',
+                'usersCreator.roles:id,name as roles_name',
+                'usersReceiver.divisions:id,name as divisions_name',
+                'usersReceiver.roles:id,name as roles_name',
+                'approverNota',
+            ]
+        )
+            ->whereHas('usersCreator', function ($query) use ($division_id) {
+                $query->where('division_id', $division_id);
+            })
+            ->whereHas('approverNota', function ($query) {
+                $query->where('isApproved', 0);
+            })
+            ->orderBy('tgl_nota', 'desc')
+            ->get();
+
+        return response()->json([
+            'message' => Response::HTTP_ACCEPTED,
+            'data' => $nota,
         ]);
     }
 }
