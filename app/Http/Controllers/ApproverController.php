@@ -11,21 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ApproverController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create(Request $request)
     {
         $this->validate($request, [
@@ -54,23 +40,6 @@ class ApproverController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreApproverRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Approver  $approver
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $show = Approver::where('user_id', $id)
@@ -91,24 +60,6 @@ class ApproverController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Approver  $approver
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Approver $approver)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateApproverRequest  $request
-     * @param  \App\Models\Approver  $approver
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $user_id,$nota_id)
     {
         $data = Approver::where('user_id',$user_id)
@@ -121,16 +72,5 @@ class ApproverController extends Controller
             'message' => Response::HTTP_ACCEPTED,
             'data' => $data,
         ]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Approver  $approver
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Approver $approver)
-    {
-        //
     }
 }

@@ -14,6 +14,7 @@ class Nota extends Model
         'no_nota', 
         'perihal', 
         'receiver_id', 
+        'document',
         'creator_id', 
         'openedAt',
         'lastOpened_id'

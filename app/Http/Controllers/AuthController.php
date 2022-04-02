@@ -12,22 +12,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -62,54 +47,22 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function login(Request $request)
     {
-            $credentials = $request->only(['NIP','password']);
-            
-            if (! Auth::attempt($credentials)){
-                return response()->json([
-                    'message' => Response::HTTP_UNAUTHORIZED,
-                ]);
-            }
-                $nip = User::where('NIP', $request['NIP'])->firstOrFail();
-                $token = $nip->createToken('auth_token')->plainTextToken;
+        $credentials = $request->only(['NIP','password']);
+        
+        if (! Auth::attempt($credentials)){
+            return response()->json([
+                'message' => Response::HTTP_UNAUTHORIZED,
+            ]);
+        }
+            $nip = User::with('roles','divisions')
+            ->where('NIP', $request['NIP'])->firstOrFail();
+            $token = $nip->createToken('auth_token')->plainTextToken;
 
-                return $this->respondWithToken($token, $nip);  
-        }      
+            return $this->respondWithToken($token, $nip);  
+    }      
+    
     protected function respondWithToken($token, $data)
     {
         return response()->json([

@@ -16,7 +16,8 @@ class CreateNotasTable extends Migration
         Schema::create('notas', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_nota');
-            $table->string('no_nota')->unique();
+            $table->string('no_nota');
+            $table->string('document')-> nullable();
             $table->text('perihal');
             $table->foreignId('creator_id')->nullable()->constrained('users');
             $table->foreignId('receiver_id')->nullable()->constrained('users');

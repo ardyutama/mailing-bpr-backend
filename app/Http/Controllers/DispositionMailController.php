@@ -9,22 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DispositionMailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-       
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -56,12 +40,6 @@ class DispositionMailController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\DispositionMail  $dispositionMail
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $disposition = DispositionMail::with('dispositionMails')->where('nota_id', $id)->get();
@@ -69,28 +47,5 @@ class DispositionMailController extends Controller
             'message' => Response::HTTP_ACCEPTED,
             'data' => $disposition,
         ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DispositionMail  $dispositionMail
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, DispositionMail $dispositionMail)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\DispositionMail  $dispositionMail
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(DispositionMail $dispositionMail)
-    {
-        //
     }
 }

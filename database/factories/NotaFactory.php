@@ -22,6 +22,7 @@ class NotaFactory extends Factory
             'no_nota' => $this->faker->unique()->numberBetween(0,20),
             'perihal' => $this->faker->paragraph(mt_rand(3, 5)),
             'creator_id' =>  $this->faker->randomElement($user_id),
+            // 'document' => $this->faker->fileE
             'receiver_id' =>  $this->faker->randomElement($user_id),
             'openedAt' => $this->faker->dateTimeBetween('-1 week', 'now'),
             'lastOpened_id' =>  $this->faker->randomElement($user_id),

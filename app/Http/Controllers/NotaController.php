@@ -8,19 +8,11 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 use Symfony\Component\HttpFoundation\Response;
-
+use PDF;
 class NotaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,26 +21,33 @@ class NotaController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request);
         $this->validate($request, [
             'tgl_nota' => ['required'],
             'no_nota' => ['required'],
             'perihal' => ['required', 'string'],
             'creator_id' => ['required'],
             'receiver_id' => ['required'],
+            'document' => 'required|mimes:pdf,doc,docx|max:10000',
             'openedAt' => ['nullable'],
-            'lastOpened_id' => ['nullable'],
+            'lastOpened_id' => ['nullable'],    
         ]);
 
         try {
+            $dokumen = $request->file('document');
+            $fileName = time() . '.' . $request->file('document')->getClientOriginalExtension();
+            $dokumen->storeAs('uploads', $fileName);
             $nota = Nota::create([
                 'tgl_nota' => Carbon::parse($request->tgl_nota),
                 'no_nota' => $request->no_nota,
                 'perihal' => $request->perihal,
+                'document' => $fileName,
                 'creator_id' => $request->creator_id,
                 'receiver_id' => $request->receiver_id,
                 'openedAt' => Carbon::parse($request->openedAt),
                 'lastOpened_id' => $request->lastOpened_id,
             ]);
+
             $nota->save();
             
             return response()->json([
@@ -62,38 +61,7 @@ class NotaController extends Controller
             ]);
         }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreNotaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store($id)
-    {
-        // $eagerKeluar = Nota::with('usersCreator')->get();
-
-        // return response()->json([
-        //     'message' => Response::HTTP_ACCEPTED,
-        //     'data' => $eagerKeluar,
-        // ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Nota  $nota
-     * @return \Illuminate\Http\Response
-     */
-    public function show($division_id)
-    {
-        $nota = Nota::where('division_id', $division_id)->get();
-        return response()->json([
-            'message' => Response::HTTP_ACCEPTED,
-            'data' => $nota,
-        ]);
-    }
-
+    
     public function notaMasuk($division_id)
     {
         $nota = Nota::with(
@@ -121,48 +89,8 @@ class NotaController extends Controller
             'data' => $nota,
         ]);
     }
-    public function notaKeluar($id)
-    {
-        $nota = Nota::where("divisionFrom_id",$id)
-        ->join('users', 'notas.creator_id', '=', 'users.id')
-        ->select('notas.*', 'users.first_name', 'users.last_name')
-        ->get();
-        return response()->json([
-            'message' => Response::HTTP_ACCEPTED,
-            'data' => $nota,
-        ]);
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Nota  $nota
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Nota $nota)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateNotaRequest  $request
-     * @param  \App\Models\Nota  $nota
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Nota  $nota
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Nota $nota)
-    {
-        //
-    }
-
-    public function notaCoba($division_id) {
+   
+    public function notaKeluar($division_id) {
         $eagerKeluar = Nota::with(
             ['usersCreator',
             'usersReceiver',
@@ -179,32 +107,6 @@ class NotaController extends Controller
         return response()->json([
             'message' => Response::HTTP_ACCEPTED,
             'data' => $eagerKeluar,
-        ]);
-    }
-
-    public function coba($id){
-        $findUser = Nota::with(
-        ['usersApproverOne', 'usersApproverTwo', 'usersApproverThree'])
-        ->where('approverOne_id',$id)
-        ->orWhere('approverTwo_id', $id)
-        ->orWhere('approverThree_id', $id)
-        ->get();
-
-        return response()->json([
-            'message' => Response::HTTP_ACCEPTED,
-            'data' => $findUser,
-        ]);
-    }
-    public function approver(Nota $nota , $id) {
-        $show = $nota::with(['approverNota' => function ($query) use($id){
-            $query->where('user_id', $id);
-        }])
-        ->with(['approverNota.users'])
-        ->get();
-
-        return response()->json([
-            'message' => Response::HTTP_ACCEPTED,
-            'data' => $show,
         ]);
     }
     public function notaPending($division_id)
